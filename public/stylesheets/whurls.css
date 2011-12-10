@@ -67,6 +67,12 @@ textarea#body {
     margin-bottom: 10px;
 }
 
+textarea#description {
+    width: 610px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
 .textarea_disabled {
     background-color: lightgray;
 }
@@ -150,6 +156,17 @@ body {
 }
 .response_section {
     margin-top: 20px;
+}
+
+#description {
+    background-color: white;
+    overflow-x: auto;
+}
+
+#edit_description {
+    padding: 0 20px;
+    background-color: white;
+    overflow-x: auto;
 }
 
 .action_button {

@@ -7,7 +7,8 @@ class WhurlsController < ApplicationController
   def create
     client_headers = Hash[params[:header_keys].zip(params[:header_values])].delete_if { |k,_| k.blank? }
     client_params = Hash[params[:param_keys].zip(params[:param_values])].delete_if { |k,_| k.blank? }
-    whurl = Whurl.new(:data => {:headers => client_headers,
+    whurl = Whurl.new(:description => params[:description],
+                      :data => {:headers => client_headers,
                                  :query => client_params,
                                  :body => params[:body],
                                  :http_method => params[:http_method],
@@ -19,6 +20,8 @@ class WhurlsController < ApplicationController
 
   def edit
     @whurl = Whurl.find_by_hash_key(params[:id])
+    @description = @whurl.description
+
     client_headers = {'User-Agent' => "Whurl/1.1 (https://whurl.heroku.com)"}.merge(@whurl.data[:headers])
 
     client_response = AnyClient.send(@whurl.data[:http_method].downcase,

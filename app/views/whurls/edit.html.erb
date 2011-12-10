@@ -1,3 +1,12 @@
+<% unless @description.nil? %>
+<div class="response_section">
+  <div class="response_section_title">Description</div>
+  <div id="edit_description">
+    <%= @description %>
+  </div>
+</div>
+<% end %>
+
 <div class="response_section">
   <div class="response_section_title">Response Headers</div>
   <div id="response_header">

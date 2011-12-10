@@ -74,6 +74,24 @@ $(document).ready(function() {
         Whurl.generatePermalink();
     });
 
+    $("#trashheaders").click(function() {
+        $(".header_pair").each(function(i,e) {
+           if (i != 0) {
+               $(e).remove();
+           }
+        });
+        Whurl.addHeader();
+    });
+
+    $("#trashqueries").click(function() {
+        $(".param_pair").each(function(i,e) {
+           if (i != 0) {
+               $(e).remove();
+           }
+        });
+        Whurl.addParam();
+    });
+
     $('.header_pair').each(function(i) {
         $($(this).children('input')[1]).focusin(function() {
             if($('.header_pair:last').children('input').val() != "") {

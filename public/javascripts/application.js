@@ -59,8 +59,10 @@ $(document).ready(function() {
     });
 
     $("#clearFields").click(function() {
+        var restoreTextBox = $("#permalink_text_box").val();
        $("input[type=text]").val("");
        $("textarea").val("");
+        $("#permalink_text_box").val(restoreTextBox);
     });
 
     $('.delete_header').live('click', function() {

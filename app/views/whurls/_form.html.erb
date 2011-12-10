@@ -8,6 +8,7 @@
     <% end %>
     </ul>
 <% end %>
+
 <div class="top">
   <%= form_tag(whurls_path, :id => "whurl_form", :method => :post) do %>
       <div class="row">
@@ -73,7 +74,7 @@
           <span class="hTitle">Custom URL (optional)</span>
         </div>
         <div id="custom_url">
-            <%= text_field_tag('custom_url', @whurl.custom_url) %>
+            <%= text_field_tag('custom_url', @whurl.custom_url, :id => "customurl") %>
         </div>
       </div>
 

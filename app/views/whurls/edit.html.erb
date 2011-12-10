@@ -9,7 +9,7 @@
     Response Body <%= image_tag("clipboard.png", :id => "copy_to_clipboard") %>
   </div>
   <div class="response_container">
-    <%= @api_response %>
+    <%= raw @api_response %>
   </div>
 </div>
 <%= render :partial => 'form' %>
@@ -23,7 +23,7 @@
         ZeroClipboard.setMoviePath( '/javascripts/zero_clipboard/ZeroClipboard10.swf' );
         var clip = new ZeroClipboard.Client();
         clip.setHandCursor(true);
-        clip.setText($('.CodeRay td.code').html());
+        clip.setText($('.CodeRay td.code').text());
         clip.glue('copy_to_clipboard');
     });
 </script>

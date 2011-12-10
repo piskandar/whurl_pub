@@ -7,19 +7,29 @@ class WhurlsController < ApplicationController
   def create
     client_headers = Hash[params[:header_keys].zip(params[:header_values])].delete_if { |k,_| k.blank? }
     client_params = Hash[params[:param_keys].zip(params[:param_values])].delete_if { |k,_| k.blank? }
-    whurl = Whurl.new(:description => params[:description],
+    @whurl = Whurl.new(:description => params[:description],
+                      :custom_url => params[:custom_url],
                       :data => {:headers => client_headers,
                                  :query => client_params,
                                  :body => params[:body],
                                  :http_method => params[:http_method],
                                  :url => params[:url]
     })
-    whurl.save
-    redirect_to short_path(:id => whurl.hash_key)
+
+    if @whurl.save
+      redirect_to short_path(:id => @whurl.hash_key) and return unless !@whurl.custom_url.blank?
+      redirect_to short_path(:id => @whurl.custom_url)
+    else
+      render :action => "new"
+    end
   end
 
   def edit
     @whurl = Whurl.find_by_hash_key(params[:id])
+    if @whirl.nil?
+      @whurl = Whurl.find_by_custom_url(params[:id])
+    end
+
     @description = @whurl.description
 
     client_headers = {'User-Agent' => "Whurl/1.1 (https://whurl.heroku.com)"}.merge(@whurl.data[:headers])

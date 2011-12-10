@@ -12,7 +12,9 @@ var Whurl = {
             }
         });
         $headerFields.hide().appendTo('#headers');
-        $headerFields.slideDown('fast');
+        var temp = Whurl.addHeader;
+        $headerFields.slideDown('fast', function () { Whurl.addHeader = temp; });
+        Whurl.addHeader = function () {};
     },
     deleteHeader: function(element) {
         var $paramFields = $(element).closest(".header_pair");
@@ -30,7 +32,9 @@ var Whurl = {
             }
         });
         $paramFields.hide().appendTo('#params');
-        $paramFields.slideDown('fast');
+        var temp = Whurl.addParam;
+        $paramFields.slideDown('fast',  function () { Whurl.addParam = temp; });
+        Whurl.addParam = function () {};
     },
     deleteParam: function(element) {
         var $paramFields = $(element).closest(".param_pair");

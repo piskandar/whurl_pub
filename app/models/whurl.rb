@@ -1,5 +1,7 @@
 class Whurl < ActiveRecord::Base
   serialize :data
+  validates_uniqueness_of :custom_url
+  validates_format_of :custom_url, :with => /^[\w\-]+$/i, :message => "can only contain letters, numbers, hiphens and underscores."
 
   after_initialize {
     generate_hash_key if new_record?

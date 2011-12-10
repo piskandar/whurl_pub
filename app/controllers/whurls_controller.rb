@@ -17,16 +17,17 @@ class WhurlsController < ApplicationController
     })
 
     if @whurl.save
-      redirect_to short_path(:id => @whurl.hash_key) and return unless !@whurl.custom_url.blank?
-      redirect_to short_path(:id => @whurl.custom_url)
+      redirect_to short_path(:id => @whurl.hash_key) and return if @whurl.custom_url.blank?
+      redirect_to short_path(:id => @whurl.custom_url) and return
     else
       render :action => "new"
     end
   end
 
   def edit
+    puts params[:id]
     @whurl = Whurl.find_by_hash_key(params[:id])
-    if @whirl.nil?
+    if @whurl.nil?
       @whurl = Whurl.find_by_custom_url(params[:id])
     end
 

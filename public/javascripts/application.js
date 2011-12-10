@@ -58,6 +58,11 @@ $(document).ready(function() {
         Whurl.addHeader();
     });
 
+    $("#clearFields").click(function() {
+       $("input[type=text]").val("");
+       $("textarea").val("");
+    });
+
     $('.delete_header').live('click', function() {
         Whurl.deleteHeader(this);
     });

@@ -4,7 +4,6 @@
 class ApplicationController < ActionController::Base
 #  protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :adjust_format_for_iphone
-  before_filter :redirect_to_ssl
   private
 
   def adjust_format_for_iphone

@@ -1,3 +1,35 @@
+var headers = ["Accept",
+                        "Accept-Charset",
+                        "Accept-Encoding",
+                        "Accept-Language",
+                        "Authorization",
+                        "Cache-Control",
+                        "Connection",
+                        "Cookie",
+                        "Content-Length",
+                        "Content-MD5",
+                        "Content-Type",
+                        "Date",
+                        "Expect",
+                        "From",
+                        "Host",
+                        "If-Match",
+                        "If-Modified-Since",
+                        "If-None-Match",
+                        "If-Range",
+                        "If-Unmodified-Since",
+                        "Max-Forwards",
+                        "Pragma",
+                        "Proxy-Authorization",
+                        "Range",
+                        "Referer",
+                        "TE",
+                        "Upgrade",
+                        "User-Agent",
+                        "Via",
+                        "Warning"];
+
+
 var Whurl = {
     computePermalink: function() {
 
@@ -14,6 +46,9 @@ var Whurl = {
         $headerFields.hide().appendTo('#headers');
         var temp = Whurl.addHeader;
         $headerFields.slideDown('fast', function () { Whurl.addHeader = temp; });
+
+        $(".header_pair:last").children(":eq(0)").autocompleteArray(headers);
+
         Whurl.addHeader = function () {};
     },
     deleteHeader: function(element) {
@@ -54,6 +89,8 @@ var Whurl = {
 };
 
 $(document).ready(function() {
+    $(".header_pair:eq(1)").children(":eq(0)").autocompleteArray(headers);
+
     $('#add_header').click(function() {
         Whurl.addHeader();
     });

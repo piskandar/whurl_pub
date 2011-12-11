@@ -225,13 +225,20 @@ a.delete:hover {
 
 .submit {
     float: right;
-    margin: -20px 60px 0 0;
+    margin: -10px 60px 0 0;
     color: #2B2F38;
     background-color:#F1CB31;
     font-weight: bold;
     font-size: 16px;
 }
-
+.clear {
+    float: left;
+    margin: -10px 60px 0 0;
+    color: #2B2F38;
+    background-color:#F1CB31;
+    font-weight: bold;
+    font-size: 16px;
+}
 .submit:hover {
     background-position: -91.5px 0;
 }
